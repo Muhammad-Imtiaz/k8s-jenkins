@@ -1,31 +1,21 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-python-service
-spec:
-  selector:
-    app: hello-python
-  ports:
-  - protocol: "TCP"
-    port: 80
-    targetPort: 5000
-  type: ClusterIP
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-  replicas: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
-        app: hello-python
+        app: nginx
     spec:
       containers:
-      - name: hello-python
-        image: imtiaz1519/hello-python:latest
-        imagePullPolicy: Never
+      - name: nginx
+        image: nginx:1.14.2
         ports:
-        - containerPort: 5000
+        - containerPort: 80
