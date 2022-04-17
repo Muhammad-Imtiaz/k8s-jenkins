@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/justmeandopensource/playjenkins.git', branch:'test'
+        git url:'https://github.com/Muhammad-Imtiaz/k8s-jenkins.git', branch:'master'
       }
     }
 
