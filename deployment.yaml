@@ -18,6 +18,9 @@ metadata:
   name: hello-python
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: hello-python
   template:
     metadata:
       labels:
@@ -26,6 +29,5 @@ spec:
       containers:
       - name: hello-python
         image: imtiaz1519/hello-python:latest
-        imagePullPolicy: Never
         ports:
         - containerPort: 5000
