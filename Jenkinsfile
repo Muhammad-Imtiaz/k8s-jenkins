@@ -2,7 +2,8 @@ pipeline {
 
   agent any
   environment {
-    registry = "imtiaz1519/hello-world"
+    registry = "imtiaz1519/hello-python"
+    registryCredential = 'dockerhub_id'
     dockerImage = ""
   }
 
@@ -25,7 +26,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
+          docker.withRegistry( '', registryCredential  ) {
             dockerImage.push()
           }
         }
